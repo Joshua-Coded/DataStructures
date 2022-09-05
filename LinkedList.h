@@ -1,6 +1,8 @@
 #ifndef LinkedList_h
 #define LinkedList_h
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "Node.h"
 
 
@@ -13,7 +15,7 @@ struct LinkedList_int
    void (*remove)(int index, struct LinkedList_int *linked_list);
    int (*retrieve)(int index, struct LinkedList_int *linked_list);
 
-
+   struct LinkedList_in (*contructor)(void);
 };
 
 struct LinkedList_int linked_list_constructor();
