@@ -16,9 +16,9 @@ void main()
   while(choice){
     newnode = (struct node *)malloc(sizeof(struct node));
     printf("Enter data: \n");
-  scanf("%d", &newnode->data);
-  newnode->next = 0;
-  if(head == 0)
+    scanf("%d", &newnode->data);
+   newnode->next = 0;
+    if(head == 0)
     {
       head = temp = newnode;
     }else {
@@ -32,7 +32,7 @@ void main()
   temp = head;
   while(temp != 0)
     {
-      printf("%d", temp->data);
+      printf("%d \n", temp->data);
       temp = temp->next;
       count++;
     }
