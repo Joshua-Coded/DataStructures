@@ -1,7 +1,7 @@
 class Animal:
     def __init__(self, birthType="Uknown", appearance="Unknown", blooded="Unknown"):
         self.birthType = birthType
-        self.birthAppearance = appearance
+        self.appearance = appearance
         self.blooded = blooded
 
 
@@ -72,13 +72,22 @@ class Reptile(Animal):
             sum += i
         return sum
 
+def getBirthType(theObject):
+        print("the {} is {}".format(type(theObject).__name__, theObject.birthType))
+    
 
 def main():
     animal1 = Animal("born alive")
     print(animal1.birthType)
 
+    print(animal1)
+
+    getBirthType(animal1)    
+
+    reptile = Reptile()
+    getBirthType(reptile)
+
+    mammal = Mammal()
+
+    getBirthType(mammal)
 main()
-
-
-
-
