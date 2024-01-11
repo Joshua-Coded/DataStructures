@@ -11,3 +11,12 @@ print(myFile.closed)
 print(myFile.name)
 
 print(myFile.mode)
+
+
+os.rename("mydata.txt", "data.txt")
+os.remove("data.txt")
+
+os.mkdir("mkdir")
+os.chdir("mkdir")
+
+print("Current directory :", os.getcwd())
