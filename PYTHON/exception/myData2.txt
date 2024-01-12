@@ -1,0 +1,3 @@
+Some cute code in here
+Great to learn to code in python
+Never Liked it but my school forced me to code in python.
