@@ -19,3 +19,9 @@ print([x * y for x in range(1,3) for y in range(11,16)])
 # Return multiple of 8
 
 print([x for x in [i * 2 for i in range(10)] if x % 8 == 0])
+
+multiList = [[1, 2, 3], [6, 7, 8], [10, 11, 12]]
+
+print([col[1] for col in multiList])
+
+print([multiList[i][i] for i in range(len(multiList))])
