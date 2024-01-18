@@ -51,9 +51,28 @@ import re
 # randStr = regex.sub(" ", randStr)
 # print(randStr)
 
-randStr = "12345"
+# randStr = "12345"
 
 # print("Matches : " , len(re.findall("\d", randStr)))
+# print("Matches : " , len(re.findall("\d{5}", randStr)))
+
+# numStr = "123 12345 123456 1234567"
+
+# print("Matches : " , len(re.findall("\d{5,7}" , numStr)))
+
+# phNum = "234-435-435-3323"
+
+# if re.search("\w{3}-\w{3}-\w{4}", phNum):
+#     print("That is a phone number") 
+
+# if re.search("\w{2,20}", "newton"):
+#     print("is a valid name")
+# else:
+#     print("is not a valid name")
 
 
-print("Matches : " , len(re.findall("\d{5}", randStr)))
+# if re.search("\w{2,20}\s\w{2,20}", "the boy is good"):
+#     print("great that is valid")
+# else:
+#     print("that is not great")
+
