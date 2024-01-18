@@ -25,9 +25,35 @@ import re
 # for i in someAnimals:
 #     print(i)
 
-owlFood = "Rat, Cat, Mat, Pat"
+# owlFood = "Rat, Cat, Mat, Pat"
 
-regex = re.compile("[CR]at")
+# regex = re.compile("[CR]at")
 
-owlFood = regex.sub("owl", owlFood)
-print(owlFood)
+# owlFood = regex.sub("owl", owlFood)
+# print(owlFood)
+
+# randStr = "Here is \\stuff"
+
+# print("Find \\stuff :", re.search(r"\\stuff", randStr))
+
+# randStr = "F.B.I. I.R.S CIA"
+
+# print("Matched :", len(re.findall(".\..\..\.", randStr)))
+
+# randStr = ''' this is a long 
+# string that 
+# goes on for many lines'''
+
+# print(randStr)
+
+# regex = re.compile("\n")
+
+# randStr = regex.sub(" ", randStr)
+# print(randStr)
+
+randStr = "12345"
+
+# print("Matches : " , len(re.findall("\d", randStr)))
+
+
+print("Matches : " , len(re.findall("\d{5}", randStr)))
