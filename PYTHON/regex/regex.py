@@ -70,12 +70,9 @@ import re
 # else:
 #     print("is not a valid name")
 
-
 # if re.search("\w{2,20}\s\w{2,20}", "the boy is good"):
 #     print("great that is valid")
 # else:
 #     print("that is not great")
-
-
 
 # print("Matches", len(re.findall("a+", "a as ape animal big")))
