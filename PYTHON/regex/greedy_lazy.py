@@ -25,11 +25,35 @@ import re
 
 # randStr = "my number is 412-555-1212"
 
-randStr = "412-555-1212 412-555-6212 412-555-4212 412-555-1223"
+# randStr = "412-555-1212 412-555-6212 412-555-4212 412-555-1223"
 
-regex = re.compile(r"412-(.{8})")
+# regex = re.compile(r"412-(.{8})")
 
-match = re.findall(regex, randStr)
+# match = re.findall(regex, randStr)
 
-for i in match:
-    print(i)
+# for i in match:
+#     print(i)
+
+# randStr = "the cat cat fell out the window"
+
+# regex = re.compile(r"(\b\w+)\s+\1")
+
+# match = re.findall(regex, randStr)
+
+# for i in match:
+#     print(i)
+
+# randStr = "<a href='#'><b>The Link</b></a>"
+
+# regex = re.compile(r"<b>(.*?)</b>")
+
+# randStr = re.sub(regex, r"\1", randStr)
+# print(randStr)
+
+
+randStr = "412-555-1212"
+
+regex = re.compile(r"([\d]{3})-([\d]{3}-[\d]{4})")
+
+randStr = re.sub(regex, r"(\1)\2", randStr)
+print(randStr)
