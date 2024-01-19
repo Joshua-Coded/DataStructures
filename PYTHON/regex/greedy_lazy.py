@@ -18,12 +18,16 @@ import re
 # regex = re.compile(r"[^@\s].*$")
 
 
-randStr = '''Ape is big
-Turtle is slow
-cheetah is fast
-'''
+# randStr = '''Ape is big
+# Turtle is slow
+# cheetah is fast
+# '''
 
-regex = re.compile(r"(?m)^.*?\s")
+# randStr = "my number is 412-555-1212"
+
+randStr = "412-555-1212 412-555-6212 412-555-4212 412-555-1223"
+
+regex = re.compile(r"412-(.{8})")
 
 match = re.findall(regex, randStr)
 
