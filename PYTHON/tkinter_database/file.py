@@ -4,7 +4,6 @@ import sqlite3
 
 class StudentDB:
 
-
     # Class Field
     db_conn = 0
     theCursor = 0
@@ -50,7 +49,7 @@ class StudentDB:
                 stud_lname = row[2]
 
             # put students in the list box
-            self.list_box.insert(stud_id, stud_fname + " " + stud_lname)
+                self.list_box.insert(stud_id, stud_fname + " " + stud_lname)
         except sqlite3.OperationalError:
             print("The Table Doesn't Exist")
 
@@ -74,17 +73,31 @@ class StudentDB:
                 stud_fname = row[1]
                 stud_lname = row[2]
         # set the names in the entries.
-            self.fn_entry_value.set(stud_fname)
-            self.ln_entry_value.set(stud_lname)
+                self.fn_entry_value.set(stud_fname)
+                self.ln_entry_value.set(stud_lname)
 
         except sqlite3.OperationalError:
             print("Could not get student list from database")
         except:
             print("1: the list was empty")
 
-            
-    def updated_student_list(self):
-        print("student list updated")
+
+    def student_update(self):
+        # Update based on the current student
+        try:
+            self.db_conn.execute("UPDATE Students SET FName='" + self.fn_entry_value.get() + "', LName='" + self.fn_entry_value.get() +" ' WHERE ID=" + self.curr_student)
+
+            self.db_conn.commit()
+
+        except sqlite3.OperationalError:
+            print("Could not update student list from database")
+
+        # clear entries
+        self.fn_entry.delete(0, "end")
+        self.ln_entry.delete(0, "end")
+
+        # update the list of students
+        self.update_listbox()
 
     def __init__(self, root):
         root.title("Student Database")
@@ -109,11 +122,11 @@ class StudentDB:
 
 
         # ---- 3rd Row -----------------
-        self.submit_button = ttk.Button(root, text="Submit", command=lambda self: self.student_submit())
+        self.submit_button = ttk.Button(root, text="Submit", command=lambda: self.student_submit())
         self.submit_button.grid(row=2, column=0, padx=10, pady=10, sticky=W)
            
         # ---- 4th Row -----------------
-        self.update_button = ttk.Button(root, text="Update", command=lambda self: self.student_update())
+        self.update_button = ttk.Button(root, text="Update", command=lambda: self.student_update())
         self.update_button.grid(row=2, column=1, padx=10, pady=10)
 
         # 5th Row ----------------
@@ -131,9 +144,6 @@ class StudentDB:
         # self.setup_db()
 
         # self.update_listbox()
-
-
-
 
 root = Tk()
 studDB = StudentDB(root)
