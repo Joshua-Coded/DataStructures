@@ -11,18 +11,78 @@ class StudentDB:
     curr_student = 0
     
     def setup_db(self):
-        print("setting up database")
+
+        # Open or create database
+        self.db_conn = sqlite3.connect('student.db')
+
+        # create cursor
+        self.theCursor = self.db_conn.cursor()
+        try: 
+            # create table if it doesn't exist
+            self.db_conn.execute("CREATE TABLE IF NOT EXISTS Students(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, FName TEXT NOT NULL, LName TEXT NOT NULL);")
+
+            self.db_conn.commit()
+        except sqlite3.OperationalError:
+            print("ERROR: TABLE NOT CREATED")
 
     def student_submit(self):
-        print("student submission")
+        # Insert Students into database
+        self.db_conn.execute("INSERT INTO Students(FName, LName)" + "VALUES('" + self.fn_entry_value.get() + "', '" +  self.ln_entry_value.get() + "')")
+        
+        # Clear Entry Boxes
+        self.fn_entry.delete(0, "end")
+        self.ln_entry.delete(0, "end")
+        
+        # Update List Box
+        self.update_listbox()
 
-    def student_update(self):
-        print("student listbox updated")
+        # Delete items in list Box
+       
+    def update_listbox(self):
+        self.list_box.delete(0, "end")
 
+        # Get the student from the db
+        try:
+            result = self.theCursor.execute("SELECT ID, FName, LName FROM Students")
+            for row in result:
+                stud_id = row[0]
+                stud_fname = row[1]
+                stud_lname = row[2]
 
-    def load_student_list(self):
-        print("loading student list")
+            # put students in the list box
+            self.list_box.insert(stud_id, stud_fname + " " + stud_lname)
+        except sqlite3.OperationalError:
+            print("The Table Doesn't Exist")
 
+        except:
+            print("1: Couldn't Retrieve Data From Database")
+
+    def load_student_list(self, event=None):
+        # Get index of selected which is the student
+        lb_widget = event.widget
+        index = str(lb_widget.curselection()[0] + 1)
+
+        # Store the current student index 
+        self.curr_student_index = index
+        
+        # Retrieve the student list from database
+        try:
+            result = self.theCursor.execute("SELECT ID, FName, LName FROM Students WHERE ID=" + index)
+
+            for row in result:
+                stud_id = row[0]
+                stud_fname = row[1]
+                stud_lname = row[2]
+        # set the names in the entries.
+            self.fn_entry_value.set(stud_fname)
+            self.ln_entry_value.set(stud_lname)
+
+        except sqlite3.OperationalError:
+            print("Could not get student list from database")
+        except:
+            print("1: the list was empty")
+
+            
     def updated_student_list(self):
         print("student list updated")
 
