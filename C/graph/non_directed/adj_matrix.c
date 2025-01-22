@@ -1,34 +1,35 @@
 #include <stdio.h>
+
 #define V 4
 
-/* function to initialise matrix to 0 */
-
+/* function to initialise the matrix adj */
 void init(int arr[][V]) {
 int i, j;
+
 for (i = 0; i < V; i++)
     for (j = 0; j < V; j++)
 	arr[i][j] = 0;
 }
 
-/* function to add edges to the graph */
+/* function to insert Edge to the matrix */
 
-void insertEdge(int arr[][V], int i, int j) {
+void insertEdge(int arr[][V], int i, int j){
 	arr[i][j] = 1;
 	arr[j][i] = 1;
 }
 
-/* function to print the matrix elements */
+/* function to print the matrix*/
 
 void printAdjMatrix(int arr[][V]) {
 int i, j;
 
-for (i = 0; i < V; i++) {
-    printf("%d: ", i);
+for ( i = 0; i < V; i++){
+	printf("%d: ", i);
+	
     for (j = 0; j < V; j++){
 	printf("%d", arr[i][j]);
 }
 printf("\n");
-   
 }
 }
 
